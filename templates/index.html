@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nimblent - Bienvenue</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nimblent - Setup</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
+
 <body>
-    <h1>Bienvenue 👋</h1>
-    <h2>Configurez votre environement Nimblent</h2>
+    <form method="post">
+        <div class="login">
+            <!-- username password POST -->
+            <h1>Bienvenue 👋</h1>
+            <h2>Configurez votre environement NimblENT</h2>
+            <input spellcheck="false" class="text" type="text" name="schoolname" placeholder="nom de l'établissement"
+                required />
+            <input spellcheck="false" class="text" type="text" name="username" placeholder="code OGEC" required />
+            <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
+                required />
+            <input spellcheck="false" class="text" type="password" name="passwordconf"
+                placeholder="confirmer mot de passe" required />
+            {% if message != None: %}
+                <p>{{message}}</p>
+            {% endif %}
+            <div class="buttons">
+                <input class="help" type="button" value="Aide"
+                    onclick="window.location.href=`https://github.com/noappertBD/Nimblent`" />
+                <input class="button" type="submit" value="Se connecter" />
+            </div>
+        </div>
+
+    </form>
 </body>
+
 </html>

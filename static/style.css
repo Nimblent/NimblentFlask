@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    transition: 0.15s ease-in-out;
+}
+
+body {
+    background: url(./images/background.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+p {
+    margin: -5px 0 0 0;
+    padding: 0;
+    align-self: flex-start;
+    font-weight: bold;
+    font-size: larger;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+div.login {
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: #a398f7 3px 3px 15px;
+}
+
+div.buttons {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+div.buttons>input {
+    flex: 1;
+}
+
+input.text {
+    height: 40px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #4f5661;
+    background-color: #4f566118;
+}
+
+input.text:focus {
+    border-width: 0 0 5px;
+    border-color: #a398f7;
+    font-weight: bold
+}
+
+input.help {
+    height: 34.5px;
+    align-self: flex-start;
+    padding: 0;
+    margin: 0;
+    border-style: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #4f566115;
+    cursor: pointer;
+}
+
+input.button {
+    height: 34.5px;
+    align-self: flex-end;
+    padding: 0;
+    margin: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #a398f7;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #a398f7;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+
+input.help:hover {
+    background-color: #4f566130;
+}
+
+input.button:hover {
+    color: #a398f7;
+    background-color: #FFFFFF;
+    font-weight: bold
+}
+
+h1 {
+    margin: 0;
+    width: 100%;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+img.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-image: cover;
+
+}
