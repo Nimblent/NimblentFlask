@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nimblent - Setup</title>
+    <title>Nimblent - Login</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 
@@ -13,15 +13,29 @@
     <form method="post">
         <div class="login">
             <!-- username password POST -->
-            <h1>Bienvenue 👋</h1>
-            <h2>Configurez votre environement NimblENT</h2>
-            <input spellcheck="false" class="text" type="text" name="schoolname" placeholder="nom de l'établissement"
-                required />
-            <input spellcheck="false" class="text" type="text" name="username" placeholder="code OGEC" required />
-            <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
-                required />
-            <input spellcheck="false" class="text" type="password" name="passwordconf"
-                placeholder="confirmer mot de passe" required />
+            {% if type == 0: %}
+                <h1>Bienvenue 👋</h1>
+                <h2>Configurez votre environement NimblENT</h2>
+                <input spellcheck="false" class="text" type="text" name="schoolname" placeholder="nom de l'établissement"
+                    required />
+                <input spellcheck="false" class="text" type="text" name="username" placeholder="code OGEC" required />
+                <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
+                    required />
+                <input spellcheck="false" class="text" type="password" name="passwordconf"
+                    placeholder="confirmer mot de passe" required />
+            {% elif type == 1: %}
+                <h1>Bonne journée 👋</h1>
+                <h2>Connectez-vous à votre espace</h2>
+                <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
+                <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
+                    required />
+            {% elif type == 2: %}
+                <h1>Bonne journée 👋</h1>
+                <h2>Connectez-vous au panel administrateur</h2>
+                <input spellcheck="false" class="text" type="text" name="username" placeholder="code OGEC" required />
+                <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
+                    required />
+            {% endif %}
             {% if message != None: %}
                 <p>{{message}}</p>
             {% endif %}

@@ -10,19 +10,41 @@ app.config.update(SESSION_COOKIE_SECURE=True, SESSION_COOKIE_SAMESITE="None")
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == 'POST':
-        schoolname = str(request.form["schoolname"])
-        ogeccode = str(request.form["username"])
-        password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
-        verifpwd = hashlib.sha256(request.form["passwordconf"].encode('utf-8')).hexdigest()
-        if password == verifpwd:
-            School(schoolName=schoolname, ogecCode=ogeccode, password=password)
-            print('Etablissement initialisé!')
-            pass
-        return render_template("index.html", message="Les mots de passe ne correspondent pas.")
+        if School.select().count() == 0:
+            schoolname = str(request.form["schoolname"])
+            ogeccode = str(request.form["username"])
+            password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
+            verifpwd = hashlib.sha256(request.form["passwordconf"].encode('utf-8')).hexdigest()
+            if password == verifpwd:
+                School(schoolName=schoolname, ogecCode=ogeccode, password=password)
+                print('Etablissement initialisé!')
+                return render_template("index.html", message=None, type=1)
+            else:
+                return render_template("index.html", message="Les mots de passe ne correspondent pas.", type=0)
     else:
         if School.select().count() == 0:
-            return render_template("index.html", message=None)
+            return render_template("index.html", message=None, type=0)
+        else:
+            return render_template("index.html", message=None, type=1)
 
+@app.route("/admin/", methods=["GET", "POST"])
+def admin():
+    if School.select().count() == 0:
+        return url_for("index")
+    else:
+        if request.method == 'POST':
+            ogeccode = str(request.form["username"])
+            password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
+            dbpassword = School.selectBy(ogecCode=ogeccode)
+            print(dbpassword)
+            if dbpassword["password"] == password:
+                pass
+        else:
+            return render_template("index.html", message=None, type=2)
+        
+@app.route('/admin/panel/', methods=['GET'])
+def panel_admin():
+    return render_template("index.html", message="Panel admin", type=2)
 
 @app.after_request
 def add_header(response):
