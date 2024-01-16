@@ -8,11 +8,11 @@ sqlhub.processConnection = connectionForURI(connection_string)
 
 class School(SQLObject):
     schoolName = StringCol()
-    ogecCode = StringCol()
+    rne = StringCol()
     password = StringCol()
 
     def toDict(self):
-        return {"id": self.id, "schoolName": self.schoolName, "ogecCode": self.ogecCode, "password": self.password}
+        return {"id": self.id, "schoolName": self.schoolName, "rne": self.rne, "password": self.password}
 
 
 School.createTable(ifNotExists=True)

@@ -12,11 +12,11 @@ def index():
     if request.method == 'POST':
         if School.select().count() == 0:
             schoolname = str(request.form["schoolname"])
-            ogeccode = str(request.form["username"])
+            rne = str(request.form["username"])
             password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
             verifpwd = hashlib.sha256(request.form["passwordconf"].encode('utf-8')).hexdigest()
             if password == verifpwd:
-                School(schoolName=schoolname, ogecCode=ogeccode, password=password)
+                School(schoolName=schoolname, rne=rne, password=password)
                 print('Etablissement initialisé!')
                 return render_template("index.html", message=None, type=1)
             else:
@@ -33,9 +33,9 @@ def admin():
         return url_for("index")
     else:
         if request.method == 'POST':
-            ogeccode = str(request.form["username"])
+            rne = str(request.form["username"])
             password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
-            dbpassword = School.selectBy(ogecCode=ogeccode)
+            dbpassword = School.selectBy(rne=rne)
             print(dbpassword)
             if dbpassword["password"] == password:
                 pass
