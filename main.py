@@ -18,9 +18,11 @@ def index():
             if password == verifpwd:
                 School(schoolName=schoolname, rne=rne, password=password)
                 print('Etablissement initialisé!')
-                return render_template("index.html", message=None, type=1)
+                return render_template("index.html", message=None, type=2)
             else:
                 return render_template("index.html", message="Les mots de passe ne correspondent pas.", type=0)
+        else:
+            return url_for("index")
     else:
         if School.select().count() == 0:
             return render_template("index.html", message=None, type=0)
@@ -38,6 +40,9 @@ def admin():
             dbpassword = School.selectBy(rne=rne)
             print(dbpassword)
             if dbpassword["password"] == password:
+                session["account_type"] = "admin"
+                session["rne"] = rne
+                session["password"] = dbpassword
                 pass
         else:
             return render_template("index.html", message=None, type=2)
