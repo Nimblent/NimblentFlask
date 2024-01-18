@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nimblent - {%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <div class="messages">
+    {% with messages = get_flashed_messages(with_categories=true)%}
+        {% if messages%}
+            {% for category, message in messages%}
+            <div class="message {{category}}" style="animation-delay: {{(messages|length
+                -loop.index0-1)*100}}ms;">
+                <p>{{message}}</p>
+            </div>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+    </div>
+
+    {%block body%}
+    {%endblock%}
+
+    <script>
+        document.addEventListener("DOMContentLoaded")
+    </script>
+</body>
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quod odit ex maxime suscipit sed atque aliquid dolorem iusto non amet odio, esse veniam illum aspernatur debitis repudiandae corporis? Maxime.
+
+</html>

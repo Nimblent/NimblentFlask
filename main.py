@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, session, redirect, url_for
+from flask import Flask, render_template, jsonify, request, session, redirect, url_for, flash
 from db import School
 import hashlib
 
@@ -18,38 +18,49 @@ def index():
             if password == verifpwd:
                 School(schoolName=schoolname, rne=rne, password=password)
                 print('Etablissement initialisé!')
-                return render_template("index.html", message=None, type=2)
+                return render_template("login.html", message=None, type=2)
             else:
-                return render_template("index.html", message="Les mots de passe ne correspondent pas.", type=0)
+                return render_template("login.html", type=0)
         else:
-            return url_for("index")
+            return redirect(url_for("index"))
     else:
         if School.select().count() == 0:
-            return render_template("index.html", message=None, type=0)
+            return render_template("login.html", message=None, type=0)
         else:
-            return render_template("index.html", message=None, type=1)
+            return render_template("login.html", message=None, type=1)
 
 @app.route("/admin/", methods=["GET", "POST"])
 def admin():
     if School.select().count() == 0:
-        return url_for("index")
+        return redirect(url_for("index"))
     else:
         if request.method == 'POST':
             rne = str(request.form["username"])
             password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
             dbpassword = School.selectBy(rne=rne)
-            print(dbpassword)
-            if dbpassword["password"] == password:
+            if dbpassword.count() < 1:
+                flash("Lorem ipsum dolor sit amet belum taga", "warning")
+                flash("Indentifiants invalides", "error")
+                return render_template("login.html", type=2)
+            
+            if dbpassword[0].toDict()["password"] == password:
                 session["account_type"] = "admin"
                 session["rne"] = rne
-                session["password"] = dbpassword
-                pass
+                session["password"] = dbpassword[0].toDict()["password"]
+                flash("Connecté !", "success")
+                return render_template("panel.html")
+            
+            flash("Indentifiants invalides", "error")
+            return render_template("login.html", type=2)
         else:
-            return render_template("index.html", message=None, type=2)
+            return render_template("login.html", message=None, type=2)
         
 @app.route('/admin/panel/', methods=['GET'])
 def panel_admin():
-    return render_template("index.html", message="Panel admin", type=2)
+    if session & session["account_type"] == "admin" & session["rne"] == School.select().getOne().rne:
+            return redirect(url_for("panel_admin"))
+    else:
+        return render_template("login.html", message="Panel admin", type=2)
 
 @app.after_request
 def add_header(response):

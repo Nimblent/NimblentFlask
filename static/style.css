@@ -133,3 +133,52 @@ img.background {
     background-image: cover;
 
 }
+
+
+.messages {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 9999;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+}
+
+.message {
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: forwards FadeUpDownAppear 0.5s ease-out;
+}
+
+.message.error {
+    background-color: rgb(240, 46, 43);
+    color: white;
+}
+
+.message.success {
+    background-color: rgb(36, 134, 69);
+    color:white
+}
+
+.message.warning {
+    background-color: #ffc525;
+    color: #383b41
+}
+
+@keyframes FadeUpDownAppear {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
