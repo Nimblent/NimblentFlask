@@ -12,15 +12,17 @@ def index():
     if request.method == 'POST':
         if School.select().count() == 0:
             schoolname = str(request.form["schoolname"])
-            ogeccode = str(request.form["username"])
+            rne = str(request.form["username"])
             password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
             verifpwd = hashlib.sha256(request.form["passwordconf"].encode('utf-8')).hexdigest()
             if password == verifpwd:
-                School(schoolName=schoolname, ogecCode=ogeccode, password=password)
+                School(schoolName=schoolname, rne=rne, password=password)
                 print('Etablissement initialisé!')
-                return render_template("index.html", message=None, type=1)
+                return render_template("index.html", message=None, type=2)
             else:
                 return render_template("index.html", message="Les mots de passe ne correspondent pas.", type=0)
+        else:
+            return url_for("index")
     else:
         if School.select().count() == 0:
             return render_template("index.html", message=None, type=0)
@@ -33,11 +35,14 @@ def admin():
         return url_for("index")
     else:
         if request.method == 'POST':
-            ogeccode = str(request.form["username"])
+            rne = str(request.form["username"])
             password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
-            dbpassword = School.selectBy(ogecCode=ogeccode)
+            dbpassword = School.selectBy(rne=rne)
             print(dbpassword)
             if dbpassword["password"] == password:
+                session["account_type"] = "admin"
+                session["rne"] = rne
+                session["password"] = dbpassword
                 pass
         else:
             return render_template("index.html", message=None, type=2)
