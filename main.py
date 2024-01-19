@@ -39,7 +39,6 @@ def admin():
             password = hashlib.sha256(request.form["password"].encode('utf-8')).hexdigest()
             dbpassword = School.selectBy(rne=rne)
             if dbpassword.count() < 1:
-                flash("Lorem ipsum dolor sit amet belum taga", "warning")
                 flash("Indentifiants invalides", "error")
                 return render_template("login.html", type=2)
             
@@ -53,14 +52,14 @@ def admin():
             flash("Indentifiants invalides", "error")
             return render_template("login.html", type=2)
         else:
+            if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
+                return render_template("panel.html")
             return render_template("login.html", message=None, type=2)
-        
-@app.route('/admin/panel/', methods=['GET'])
-def panel_admin():
-    if session & session["account_type"] == "admin" & session["rne"] == School.select().getOne().rne:
-            return redirect(url_for("panel_admin"))
-    else:
-        return render_template("login.html", message="Panel admin", type=2)
+
+@app.route("/logout/", methods=["GET"])
+def logout():
+    session.clear()
+    return redirect(url_for("index"))
 
 @app.after_request
 def add_header(response):

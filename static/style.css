@@ -154,7 +154,7 @@ img.background {
     display: flex;
     flex-direction: column;
     opacity: 0;
-    animation: forwards FadeUpDownAppear 0.5s ease-out;
+    animation: forwards FadeUpDownAppear 5s ease-out;
 }
 
 .message.error {
@@ -173,12 +173,23 @@ img.background {
 }
 
 @keyframes FadeUpDownAppear {
-    from {
+    0% {
         transform: translateY(-50%);
         opacity: 0;
     }
-    to {
+    10% {
         transform: translateY(0%);
         opacity: 1;
+    }
+    90% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    99.9% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100%{
+        display:None;
     }
 }
