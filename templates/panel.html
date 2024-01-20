@@ -1,12 +1,28 @@
 {%extends "layouts/layout.html"%}
 {%block title %}Panel Administrateur{%endblock%}
 {%block body%}
-    <div class="school">
-        <div class="account">
+<div class="school">
+    <div class="account">
+        <div class="schoolName">
             <p>{{School.selectBy(rne=session["rne"])[0].toDict()["schoolName"]}}</p>
         </div>
+
         <div class="logout">
-            <p>lo</p>
+            <img onclick="window.location.href = `{{url_for('logout')}}`;"
+                src="{{url_for('static', filename='./images/icons/logout.svg')}}" />
         </div>
     </div>
+    <div class="menu">
+
+    </div>
+    <div class="schedule">
+
+    </div>
+    <div class="users">
+
+    </div>
+    <div class="logs">
+
+    </div>
+</div>
 {%endblock%}

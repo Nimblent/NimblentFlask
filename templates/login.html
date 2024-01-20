@@ -3,38 +3,35 @@
 {%block title%}Login{%endblock%}
 
 {%block body%}
-    <form method="post">
-        <div class="login">
-            <!-- username password POST -->
-            {% if type == 0: %}
-                <h1>Bienvenue 👋</h1>
-                <h2>Configurez votre environement NimblENT</h2>
-                <input spellcheck="false" class="text" type="text" name="schoolname" placeholder="nom de l'établissement"
-                    required />
-                <input spellcheck="false" class="text" type="text" name="username" placeholder="RNE" required />
-                <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
-                    required />
-                <input spellcheck="false" class="text" type="password" name="passwordconf"
-                    placeholder="confirmer mot de passe" required />
-            {% elif type == 1: %}
-                <h1>Bonne journée 👋</h1>
-                <h2>Connectez-vous à votre espace</h2>
-                <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
-                <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
-                    required />
-            {% elif type == 2: %}
-                <h1>Bonne journée 👋</h1>
-                <h2>Connectez-vous au panel administrateur</h2>
-                <input spellcheck="false" class="text" type="text" name="username" placeholder="RNE" required />
-                <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe"
-                    required />
-            {% endif %}
-            <div class="buttons">
-                <input class="help" type="button" value="Aide"
-                    onclick="window.location.href=`https://github.com/firelop/NimblentFlask`" />
-                <input class="button" type="submit" value="Se connecter" />
-            </div>
+<form method="post">
+    <div class="login">
+        <!-- username password POST -->
+        {% if type == 0: %}
+        <h1>Bienvenue 👋</h1>
+        <h2>Configurez votre environement NimblENT</h2>
+        <input spellcheck="false" class="text" type="text" name="schoolname" placeholder="nom de l'établissement"
+            required />
+        <input spellcheck="false" class="text" type="text" name="username" placeholder="RNE" required />
+        <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
+        <input spellcheck="false" class="text" type="password" name="passwordconf" placeholder="confirmer mot de passe"
+            required />
+        {% elif type == 1: %}
+        <h1>Bonne journée 👋</h1>
+        <h2>Connectez-vous à votre espace</h2>
+        <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
+        <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
+        {% elif type == 2: %}
+        <h1>Bonne journée 👋</h1>
+        <h2>Connectez-vous au panel administrateur</h2>
+        <input spellcheck="false" class="text" type="text" name="username" placeholder="RNE" value="{{rne}}" required />
+        <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
+        {% endif %}
+        <div class="buttons">
+            <input class="help" type="button" value="Aide"
+                onclick="window.location.href=`https://github.com/firelop/NimblentFlask`" />
+            <input class="button" type="submit" value="Se connecter" />
         </div>
+    </div>
 
-    </form>
+</form>
 {%endblock%}
