@@ -1,5 +1,12 @@
 {%extends "layouts/layout.html"%}
 {%block title %}Panel Administrateur{%endblock%}
 {%block body%}
-    
+    <div class="school">
+        <div class="account">
+            <p>{{School.selectBy(rne=session["rne"])[0].toDict()["schoolName"]}}</p>
+        </div>
+        <div class="logout">
+            <p>lo</p>
+        </div>
+    </div>
 {%endblock%}

@@ -6,6 +6,7 @@
 }
 
 body {
+    margin: 0;
     background: url(./images/background.svg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -192,4 +193,17 @@ img.background {
     100%{
         display:None;
     }
+}
+
+div.account {
+    margin: 15px;
+    background-color: white !important;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 15px 0 0 15px;
+    padding: 10px 15px;
+}
+
+div.account>p {
+    margin: 0;
 }

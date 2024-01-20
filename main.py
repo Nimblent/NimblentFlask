@@ -47,13 +47,13 @@ def admin():
                 session["rne"] = rne
                 session["password"] = dbpassword[0].toDict()["password"]
                 flash("Connecté !", "success")
-                return render_template("panel.html")
+                return render_template("panel.html", School=School)
             
             flash("Indentifiants invalides", "error")
             return render_template("login.html", type=2)
         else:
             if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
-                return render_template("panel.html")
+                return render_template("panel.html", School=School)
             return render_template("login.html", message=None, type=2)
 
 @app.route("/logout/", methods=["GET"])
