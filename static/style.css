@@ -7,7 +7,7 @@
 
 body {
     margin: 0;
-    background: url(./images/background.svg) no-repeat center center fixed;
+    background: rgb(131, 116, 244) url(./images/background.svg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -173,6 +173,30 @@ img.background {
     color: #383b41
 }
 
+.cat {
+    display: flex;
+    width: calc(100% - 30px);
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.details {
+    width: calc(100% - 30px);
+    max-width: calc(100% - 30px);;
+    height: calc(100% - 30px);
+    background-color: rgb(236, 236, 237);
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.actions {
+    display: flex;
+    width: calc(100% - 30px);
+    gap: 10px;
+    justify-content: stretch;
+}
+
 @keyframes FadeUpDownAppear {
     0% {
         transform: translateY(-50%);
@@ -214,6 +238,8 @@ div.account {
     border-radius: 15px;
     padding: 15px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 div.menu {

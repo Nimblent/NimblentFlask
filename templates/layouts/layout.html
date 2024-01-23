@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nimblent - {%block title%}{%endblock%}</title>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 
@@ -28,6 +29,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {
+            feather.replace();
             console.log("DOM fully loaded and parsed");
         });
     </script>
