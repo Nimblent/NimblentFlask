@@ -1,5 +1,5 @@
 {%extends "layouts/layout.html"%}
-{%block title %}Panel Administrateur{%endblock%}
+{%block title %}Accueil Prof{%endblock%}
 {%block body%}
 <div class="school">
     <div class="account">
@@ -26,11 +26,7 @@
         <div class="actions">
             <div class="button primary" onclick=window.location.href='{{url_for("add_student")}}'>
                 <i data-feather="plus"></i>
-                Ajouter un élève
-            </div>
-            <div class="button primary" onclick=window.location.href='{{url_for("add_teacher")}}'>
-                <i data-feather="plus"></i>
-                Ajouter un professeur
+                Ajouter un utilisateur
             </div>
         </div>
     </div>

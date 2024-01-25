@@ -18,12 +18,27 @@
         {% elif type == 1: %}
         <h1>Bonne journée 👋</h1>
         <h2>Connectez-vous à votre espace</h2>
-        <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
+        <input spellcheck="false" class="text" type="text" name="username" value="{{username}}" placeholder="nom d'utilisateur" required />
         <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
         {% elif type == 2: %}
         <h1>Bonne journée 👋</h1>
         <h2>Connectez-vous au panel administrateur</h2>
-        <input spellcheck="false" class="text" type="text" name="username" placeholder="RNE" value="{{rne}}" required />
+        <input spellcheck="false" class="text" type="text" name="username" placeholder="RNE" value="{{username}}" required />
+        <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
+        {% elif type == 3: %}
+        <h1>Création d'un compte</h1>
+        <h2>Ajouter un élève</h2>
+        <input spellcheck="false" class="text" type="text" name="firstName" placeholder="prénom.s" required />
+        <input spellcheck="false" class="text" type="text" name="lastName" placeholder="nom de famille" required />
+        <input spellcheck="false" class="text" type="text" name="level" placeholder="classe" required />
+        <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
+        <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
+        {% elif type == 4: %}
+        <h1>Création d'un compte</h1>
+        <h2>Ajouter un professeur</h2>
+        <input spellcheck="false" class="text" type="text" name="firstName" placeholder="prénom.s" required />
+        <input spellcheck="false" class="text" type="text" name="lastName" placeholder="nom de famille" required />
+        <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
         <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
         {% endif %}
         <div class="buttons">
