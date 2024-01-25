@@ -227,7 +227,7 @@ div.school {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
-    grid-auto-rows: minmax(50px, auto);
+    grid-auto-rows: minmax(50px, 50px);
     margin: 15px
 }
 
@@ -303,4 +303,41 @@ div.logout {
     margin: 0 0 0 10px;
     display: flex !important;
     flex-direction: row-reverse;
+}
+
+details {
+    border: 0;
+    overflow: scroll !important;
+}
+
+div.details>div.tile {
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+div.details>div.tile>div.pdp {
+    border-radius: 100px;
+    background-color: #383b41;
+    width: 60px;
+    height: 60px;
+}
+
+div.details>div.tile>div.text {
+    margin: auto auto 4px 15px
+}
+
+div.details>div.tile>div.text>div.name>p {
+    font-size: 22px;
+}
+
+div.details>div.tile>div.text>div.level>p {
+    font-size: 16px;
+}
+
+div.details>div.separator {
+    height: 2px;
+    width: 100%;
+    background-color: #383b41;
+    display: block;
 }
