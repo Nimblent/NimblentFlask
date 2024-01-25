@@ -107,7 +107,7 @@ def admin():
         else:
             print(session.get("account_type"))
             if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
-                return render_template("panel.html", School=School)
+                return render_template("panel.html", School=School, Students=Students, Teachers=Teachers)
             return render_template("login.html", type=2)
 
 @app.route("/admin/addstudent/", methods=["GET", "POST"])

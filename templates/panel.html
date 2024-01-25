@@ -23,160 +23,38 @@
     <div class="users cat">
         <h2>Base utilisateur</h2>
         <div class="usersDetails details">
+            {% for student in Students.select()%}
             <div class="tile">
                 <div class="pdp">
 
                 </div>
                 <div class="text">
                     <div class="name">
-                        <p>Nolan APPERT</p>
+                        <p>{{student.toDict()["firstName"]}} {{student.toDict()["lastName"]}}</p>
                     </div>
                     <div class="level">
-                        <p>TA</p>
+                        <p>{{student.toDict()['level']}}</p>
                     </div>
                 </div>
             </div>
             <div class="separator"></div>
+            {%endfor%} 
+            {% for teacher in Teachers.select()%}
             <div class="tile">
                 <div class="pdp">
 
                 </div>
                 <div class="text">
                     <div class="name">
-                        <p>Nolan APPERT</p>
+                        <p>{{teacher.toDict()["firstName"]}} {{teacher.toDict()["lastName"]}}</p>
                     </div>
                     <div class="level">
-                        <p>TA</p>
+                        <p>Professeur</p>
                     </div>
                 </div>
             </div>
             <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>Nolan APPERT</p>
-                    </div>
-                    <div class="level">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
+            {%endfor%} 
         </div>
         <div class="actions">
             <div class="button primary" onclick=window.location.href='{{url_for("add_student")}}'>
