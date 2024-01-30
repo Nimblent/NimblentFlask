@@ -311,9 +311,14 @@ details {
 }
 
 div.details>div.tile {
-    margin: 15px;
+    padding: 15px;
     display: flex;
     flex-direction: row;
+    border-bottom: #383b41 solid 2px ;
+}
+
+div.details>div.tile:last-child {
+    border-bottom: none;
 }
 
 div.details>div.tile>div.pdp {
@@ -333,11 +338,4 @@ div.details>div.tile>div.text>div.name>p {
 
 div.details>div.tile>div.text>div.level>p {
     font-size: 16px;
-}
-
-div.details>div.separator {
-    height: 2px;
-    width: 100%;
-    background-color: #383b41;
-    display: block;
 }
