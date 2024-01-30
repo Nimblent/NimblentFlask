@@ -19,6 +19,25 @@ class User(SQLObject):
     is_a_teacher = BoolCol()
     password = StringCol()
 
+class Group(SQLObject):
+    name = StringCol()
+    referant = StringCol()
+    parent = StringCol()
+    defaultPermission = StringCol()
+
+class Course(SQLObject):
+    start = DateTimeCol()
+    end = DateTimeCol()
+    professor = StringCol()
+    groups = StringCol()
+    subject = StringCol()
+
+class Subject(SQLObject):
+    name = StringCol()
+
 
 School.createTable(ifNotExists=True)
 User.createTable(ifNotExists=True)
+Group.createTable(ifNotExists=True)
+Course.createTable(ifNotExists=True)
+Subject.createTable(ifNotExists=True)
