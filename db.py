@@ -1,4 +1,4 @@
-from sqlobject import sqlhub, connectionForURI, SQLObject, StringCol, IntCol, DateTimeCol, ForeignKey, sqlbuilder
+from sqlobject import sqlhub, connectionForURI, SQLObject, StringCol, IntCol, DateTimeCol, BoolCol, ForeignKey, sqlbuilder
 import os
 
 db_filename = os.path.abspath('data.db')
@@ -11,29 +11,14 @@ class School(SQLObject):
     rne = StringCol()
     password = StringCol()
 
-    def toDict(self):
-        return {"id": self.id, "schoolName": self.schoolName, "rne": self.rne, "password": self.password}
-
-class Students(SQLObject):
+class User(SQLObject):
     username = StringCol()
     firstName = StringCol()
     lastName = StringCol()
-    level = StringCol()
+    permissions = IntCol()
+    is_a_teacher = BoolCol()
     password = StringCol()
-
-    def toDict(self):
-        return {"id": id, "username": self.username, "firstName": self.firstName, "lastName": self.lastName, "level": self.level, "password": self.password}
-
-class Teachers(SQLObject):
-    username = StringCol()
-    firstName = StringCol()
-    lastName = StringCol()
-    password = StringCol()
-
-    def toDict(self):
-        return {"id": id, "username": self.username, "firstName": self.firstName, "lastName": self.lastName, "password": self.password}
 
 
 School.createTable(ifNotExists=True)
-Students.createTable(ifNotExists=True)
-Teachers.createTable(ifNotExists=True)
+User.createTable(ifNotExists=True)

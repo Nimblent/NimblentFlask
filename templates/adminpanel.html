@@ -4,7 +4,7 @@
 <div class="school">
     <div class="account">
         <div class="schoolName">
-            <p>{{School.select()[0].toDict()["schoolName"]}}</p>
+            <p>{{School.select()[0].schoolName}}</p>
         </div>
 
         <div class="logout">
@@ -23,47 +23,27 @@
     <div class="users cat">
         <h2>Base utilisateur</h2>
         <div class="usersDetails details">
-            {% for student in Students.select()%}
+            {% for user in users.select()%}
             <div class="tile">
                 <div class="pdp">
 
                 </div>
                 <div class="text">
                     <div class="name">
-                        <p>{{student.toDict()["firstName"]}} {{student.toDict()["lastName"]}}</p>
+                        <p>{{user.firstName}} {{user.lastName}}</p>
                     </div>
                     <div class="level">
-                        <p>{{student.toDict()['level']}}</p>
+                        <p>{{"Professeur" if user.is_a_teacher else "Elève"}}</p>
                     </div>
                 </div>
             </div>
             <div class="separator"></div>
-            {%endfor%} 
-            {% for teacher in Teachers.select()%}
-            <div class="tile">
-                <div class="pdp">
-
-                </div>
-                <div class="text">
-                    <div class="name">
-                        <p>{{teacher.toDict()["firstName"]}} {{teacher.toDict()["lastName"]}}</p>
-                    </div>
-                    <div class="level">
-                        <p>Professeur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            {%endfor%} 
+            {%endfor%}
         </div>
         <div class="actions">
-            <div class="button primary" onclick=window.location.href='{{url_for("add_student")}}'>
+            <div class="button primary" onclick=window.location.href='{{url_for("add_user")}}'>
                 <i data-feather="plus"></i>
-                Ajouter un élève
-            </div>
-            <div class="button primary" onclick=window.location.href='{{url_for("add_teacher")}}'>
-                <i data-feather="plus"></i>
-                Ajouter un professeur
+                Ajouter un utilisateur
             </div>
         </div>
     </div>

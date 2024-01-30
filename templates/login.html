@@ -42,22 +42,13 @@
         </div>
         {% elif type == 3: %}
         <h1>Création d'un compte</h1>
-        <h2>Ajouter un élève</h2>
+        <h2>Ajouter un utilisateur</h2>
         <input spellcheck="false" class="text" type="text" name="firstName" placeholder="prénom.s" required />
         <input spellcheck="false" class="text" type="text" name="lastName" placeholder="nom de famille" required />
-        <input spellcheck="false" class="text" type="text" name="level" placeholder="classe" required />
-        <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
-        <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
-        <div class="buttons">
-            <input class="help" type="button" value="Aide"
-                onclick="window.location.href=`https://github.com/firelop/NimblentFlask`" />
-            <input class="button" type="submit" value="Créer" />
+        <div>  
+            <input type="checkbox" name="isATeacher" />
+            <label for="isATeacher">Professeur</label>
         </div>
-        {% elif type == 4: %}
-        <h1>Création d'un compte</h1>
-        <h2>Ajouter un professeur</h2>
-        <input spellcheck="false" class="text" type="text" name="firstName" placeholder="prénom.s" required />
-        <input spellcheck="false" class="text" type="text" name="lastName" placeholder="nom de famille" required />
         <input spellcheck="false" class="text" type="text" name="username" placeholder="nom d'utilisateur" required />
         <input spellcheck="false" class="text" type="password" name="password" placeholder="mot de passe" required />
         <div class="buttons">

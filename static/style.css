@@ -192,6 +192,7 @@ img.background {
 
 .actions {
     display: flex;
+    flex-direction: row;
     width: calc(100% - 30px);
     gap: 10px;
     justify-content: stretch;
@@ -340,4 +341,25 @@ div.details>div.separator {
     width: 100%;
     background-color: #383b41;
     display: block;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    transition: 0.2 ease-in-out;
+}
+
+.button.primary {
+    background-color: #383b41;
+    border-radius: 5px;
+    color: white;
+    
 }
