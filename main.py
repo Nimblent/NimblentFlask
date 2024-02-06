@@ -80,31 +80,9 @@ def admin():
     if School.select().count() == 0:
         return redirect(url_for("index"))
     else:
-        if request.method == "POST":
-            rne = str(request.form["username"])
-            password = hashlib.sha256(
-                request.form["password"].encode("utf-8")
-            ).hexdigest()
-            dbpassword = School.selectBy(rne=rne)
-            if dbpassword.count() < 1:
-                flash("Indentifiants invalides", "error")
-                return render_template("login.html", type=2, username=rne)
-
-            if dbpassword[0].password == password:
-                session["account_type"] = "admin"
-                session["rne"] = rne
-                session["password"] = dbpassword[0].password
-                flash("Connecté !", "success")
-                print(session.get("account_type"))
-                return render_template("adminpanel.html", School=School)
-
-            flash("Indentifiants invalides", "error")
-            return render_template("login.html", type=2,username=rne)
-        else:
-            print(session.get("account_type"))
-            if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
-                return render_template("adminpanel.html", School=School, users=User)
-            return render_template("login.html", type=2)
+        if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
+            return render_template("adminpanel.html", School=School, users=User)
+        return redirect(url_for("index"))
 
 @app.route("/admin/adduser/", methods=["GET", "POST"])
 def add_user():

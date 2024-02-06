@@ -19,7 +19,7 @@ class User(SQLObject):
     is_a_teacher = BoolCol()
     password = StringCol()
 
-class Group(SQLObject):
+class Groups(SQLObject):
     name = StringCol()
     referant = StringCol()
     parent = StringCol()
@@ -38,6 +38,6 @@ class Subject(SQLObject):
 
 School.createTable(ifNotExists=True)
 User.createTable(ifNotExists=True)
-Group.createTable(ifNotExists=True)
+Groups.createTable(ifNotExists=True)
 Course.createTable(ifNotExists=True)
 Subject.createTable(ifNotExists=True)
