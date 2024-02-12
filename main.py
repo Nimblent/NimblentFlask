@@ -71,7 +71,8 @@ def index():
             return render_template("login.html", type=0)
         else:
             if session.get("account_type") and session.get("username"):
-                return render_template("userpanel.html", School=School)
+                # return render_template("userpanel.html", School=School)
+                return render_template("adminpanel.html", School=School, users=User)
             return render_template("login.html", type=1)
 
 
@@ -107,6 +108,18 @@ def add_user():
             return render_template("login.html", type=3)
     else:
         return redirect(url_for("index"))
+
+@app.route("/admin/schedule/create/", methods=["POST"])
+def create_schedule():
+    pass
+
+@app.route("/admin/schedule/edit/", methods=["POST"])
+def edit_schedule():
+    pass
+
+@app.route("/admin/schedule/remove/<id>", methods=["POST"])
+def edit_schedule(id):
+    pass
 
 
 @app.route("/logout/", methods=["GET"])
