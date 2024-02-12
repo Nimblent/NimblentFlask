@@ -8,7 +8,7 @@ from flask import (
     url_for,
     flash,
 )
-from db import School, User
+from db import School, User, Course
 import hashlib
 
 
@@ -109,17 +109,38 @@ def add_user():
     else:
         return redirect(url_for("index"))
 
-@app.route("/admin/schedule/create/", methods=["POST"])
+@app.route("/admin/schedule/create/", methods=["GET", "POST"])
 def create_schedule():
-    pass
+    if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
+        if request.method == "POST":
+            Course(
+                start=request.form["start"],
+                end=request.form["end"],
+                professor=request.form["professors"],
+                groups=request.form["groups"],
+                subject=request.form["subject"],
+                room=request.form["room"],
+            )
+            flash("Cours ajouté !", "success")
+            return redirect(url_for("admin"))
+        else:
+            return render_template("schedule.html", type=0)
+    else:
+        return redirect(url_for("index"))
 
-@app.route("/admin/schedule/edit/", methods=["POST"])
+@app.route("/admin/schedule/edit/", methods=["GET", "POST"])
 def edit_schedule():
-    pass
+    if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
+        return render_template("schedule.html", type=1)
+    else:
+        return redirect(url_for("index"))
 
-@app.route("/admin/schedule/remove/<id>", methods=["POST"])
-def edit_schedule(id):
-    pass
+@app.route("/admin/schedule/remove/<id>/", methods=["GET"])
+def delete_schedule(id):
+    if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
+        return redirect(url_for("admin"))
+    else:
+        return redirect(url_for("index"))
 
 
 @app.route("/logout/", methods=["GET"])

@@ -6,29 +6,43 @@
 <form method="post">
     <div class="login">
         {% if type == 0: %}
-        <h2>Ajouter un cours</h2>
-        <input spellcheck="false" class="text" type="text" name="title" value="{{title}}" placeholder="Libellé du cours"
-            required />
+        <h2 style="width: 400px">Ajouter un cours</h2>
+        <input spellcheck="false" class="text" type="text" name="subject" value="{{subject}}"
+            placeholder="Libellé du cours" required />
         <input spellcheck="false" class="text" type="text" name="room" value="{{room}}" placeholder="Salle de classe"
             required />
-        <input spellcheck="false" class="text" type="datetime" name="start" value="{{start}}" placeholder="Jour et heure de début"
-            required />
-        <input spellcheck="false" class="text" type="datetime" name="end" value="{{end}}" placeholder="Jou et heure de fin"
-            required />
-        <input spellcheck="false" class="text" type="text" name="persons" value="{{persons}}" placeholder="Elèves et profs dans ce cours"
-            required />
+        <input spellcheck="false" class="text" type="datetime-local" name="start" value="{{start}}"
+            placeholder="Jour et heure de début" required />
+        <input spellcheck="false" class="text" type="datetime-local" name="end" value="{{end}}"
+            placeholder="Jour et heure de fin" required />
+        <input spellcheck="false" class="text" type="text" name="professors" value="{{professors}}"
+            placeholder="Professeurs dans ce cours" required />
+        <input spellcheck="false" class="text" type="text" name="groups" value="{{groups}}"
+            placeholder="Elèves dans ce cours" required />
+        <div class="buttons">
+            <input class="help" type="button" value="Aide"
+                onclick="window.location.href=`https://github.com/firelop/NimblentFlask`" />
+            <input class="button" type="submit" value="Créer" />
+        </div>
         {% elif type == 1: %}
-        <h2>Modifier un cours</h2>
-        <input spellcheck="false" class="text" type="text" name="title" value="{{title}}" placeholder="Libellé du cours"
+        <h2 style="width: 400px">Modifier un cours</h2>
+        <input spellcheck="false" class="text" type="text" name="subject" value="{{subject}}" placeholder="Libellé du cours"
             required />
         <input spellcheck="false" class="text" type="text" name="room" value="{{room}}" placeholder="Salle de classe"
             required />
-        <input spellcheck="false" class="text" type="datetime" name="start" value="{{start}}" placeholder="Jour et heure de début"
-            required />
-        <input spellcheck="false" class="text" type="datetime" name="end" value="{{end}}" placeholder="Jou et heure de fin"
-            required />
-        <input spellcheck="false" class="text" type="text" name="persons" value="{{persons}}" placeholder="Elèves et profs dans ce cours"
-            required />
+        <input spellcheck="false" class="text" type="datetime-local" name="start" value="{{start}}"
+            placeholder="Jour et heure de début" required />
+        <input spellcheck="false" class="text" type="datetime-local" name="end" value="{{end}}"
+            placeholder="Jour et heure de fin" required />
+        <input spellcheck="false" class="text" type="text" name="professors" value="{{professors}}"
+            placeholder="Professeurs dans ce cours" required />
+        <input spellcheck="false" class="text" type="text" name="groups" value="{{groups}}"
+            placeholder="Elèves dans ce cours" required />
+        <div class="buttons">
+            <input class="help" type="button" value="Aide"
+                onclick="window.location.href=`https://github.com/firelop/NimblentFlask`" />
+            <input class="button" type="submit" value="Créer" />
+        </div>
         {% endif %}
     </div>
 </form>

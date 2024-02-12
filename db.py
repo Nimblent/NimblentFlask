@@ -26,11 +26,12 @@ class Groups(SQLObject):
     defaultPermission = StringCol()
 
 class Course(SQLObject):
-    start = DateTimeCol()
-    end = DateTimeCol()
+    start = StringCol()
+    end = StringCol()
     professor = StringCol()
     groups = StringCol()
     subject = StringCol()
+    room = StringCol()
 
 class Subject(SQLObject):
     name = StringCol()
