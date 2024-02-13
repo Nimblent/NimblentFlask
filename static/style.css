@@ -361,3 +361,22 @@ div.details>div.tile>div.text>div.level>p {
     color: white;
 }
 
+select.text {
+    height: fit-content;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #4f5661;
+    background-color: #4f566118;
+}
+
+select.text:focus {
+    border-width: 0 0 5px;
+    border-color: #a398f7;
+    font-weight: bold
+}

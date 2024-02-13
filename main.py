@@ -121,14 +121,14 @@ def create_schedule():
                 subject=request.form["subject"],
                 room=request.form["room"],
             )
-            flash("Cours ajouté !", "success")
+            flash(f"Cours ajouté !", "success")
             return redirect(url_for("admin"))
         else:
-            return render_template("schedule.html", type=0)
+            return render_template("schedule.html", type=0, users=User)
     else:
         return redirect(url_for("index"))
 
-@app.route("/admin/schedule/edit/", methods=["GET", "POST"])
+@app.route("/admin/schedule/edit/<id>", methods=["GET", "POST"])
 def edit_schedule():
     if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
         return render_template("schedule.html", type=1)
