@@ -42,6 +42,17 @@ class User(SQLObject):
     password = StringCol()
 
 class GroupTable(SQLObject):
+    """
+    Représente une table de groupe dans la base de données.
+    
+    Attributes:
+        name (str): Le nom du groupe.
+        referant (User): L'utilisateur référent du groupe.
+        parent (GroupTable): The parent group of the group.
+        users (RelatedJoin): The users associated with the group.
+        defaultPermission (int): The default permission level for the group.
+    """
+
     name = StringCol()
     referant = ForeignKey('User', default=None)
     parent = ForeignKey('GroupTable', default=None)
@@ -49,6 +60,18 @@ class GroupTable(SQLObject):
     defaultPermission = IntCol()
 
 class Course(SQLObject):
+    """
+    Représente un cours dans la base de données.
+
+    Attributs:
+    - start (DateTimeCol): La date et l'heure de début du cours.
+    - end (DateTimeCol): La date et l'heure de fin du cours.
+    - professors (RelatedJoin): Les professeurs associés à ce cours.
+    - group (RelatedJoin): Les groupes associés à ce cours.
+    - subject (ForeignKey): La matière associée à ce cours.
+    - room (StringCol): La salle où se déroule le cours.
+    """
+
     start = DateTimeCol()
     end = DateTimeCol()
     professors = RelatedJoin('User')
@@ -57,6 +80,12 @@ class Course(SQLObject):
     room = StringCol()
 
 class Subject(SQLObject):
+    """
+    Représente un sujet.
+    
+    Attributes:
+        name (str): Le nom du sujet.
+    """
     name = StringCol()
 
 
