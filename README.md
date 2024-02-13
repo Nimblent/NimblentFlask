@@ -2,7 +2,7 @@
 
 # Nimblent
 
-![](https://img.shields.io/badge/python-v3.11+-blue) ![]()
+![](https://img.shields.io/badge/python-v3.11+-blue)
 
 Web project in NSI with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the framework Flask
 
