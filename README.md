@@ -18,7 +18,7 @@ You can download the project from [here](https://github.com/Nimblent/NimblentFla
 
 </div>
 
-1.  Open a commend prompt in the project directory (downloaded and extracted before)
+1.  Open a command prompt in the project directory (downloaded and extracted before)
 2.  Write `py main.py` in the terminal
 
 <div align=center>
