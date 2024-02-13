@@ -1,3 +1,10 @@
+import subprocess
+# installation automatique des packages requis pour lancer le projet
+packagesInstall = subprocess.run(["pip", "install", "--user", "-r", "requirements.txt"])
+
+if packagesInstall.returncode != 0:
+    print("Erreur lors de l'exécution de l'installation des packages.")
+
 from flask import (
     Flask,
     render_template,
