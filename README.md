@@ -78,6 +78,12 @@ On the form, you can choose the user's role, the user's name, the user's login n
 You can choose **multiple teachers and multiple students** for the course by clicking on the user while holding the `ctrl` key.
 
 
+## Retrieve courses - Admin dashboard
+There is no direct way to retrieve courses from the admin dashboard, but you can download the **current user**'s courses in a `.ics` file by clicking on the "Télécharger l'emplois du temps" button.
+
+You can then import the `.ics` file in your calendar application or use [this website to preview the schedule](https://larrybolt.github.io/online-ics-feed-viewer)
+
+
 
 <div align=center>
 
