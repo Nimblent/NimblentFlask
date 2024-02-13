@@ -4,11 +4,13 @@
 
 ![](https://img.shields.io/badge/python-v3.11+-blue)
 
-Web project in NSI with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the framework Flask
+NSI web project with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the Flask and SQLObject Frameworks
 
 Python https://www.python.org/
 
 Flask documentation https://flask.palletsprojects.com/
+
+SQLObject documentation https://www.sqlobject.org/
 
 # Downloading
 
