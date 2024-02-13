@@ -208,7 +208,7 @@ def create_schedule():
             course.addGroupTable(group)
 
             for professor in professors:
-                course.addProfessor(professor)
+                professor.addCourse(course)
 
             flash(f"Cours ajouté !", "success")
             return redirect(url_for("admin"))

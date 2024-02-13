@@ -37,19 +37,21 @@ class User(SQLObject):
     lastName = StringCol()
     permissions = IntCol()
     is_a_teacher = BoolCol()
+    courses = RelatedJoin('Course')
+    groups = RelatedJoin('GroupTable')
     password = StringCol()
 
 class GroupTable(SQLObject):
     name = StringCol()
     referant = ForeignKey('User', default=None)
     parent = ForeignKey('GroupTable', default=None)
-    users = MultipleJoin('User')
+    users = RelatedJoin('User')
     defaultPermission = IntCol()
 
 class Course(SQLObject):
     start = DateTimeCol()
     end = DateTimeCol()
-    professor = MultipleJoin('User')
+    professors = RelatedJoin('User')
     group = RelatedJoin('GroupTable')
     subject = ForeignKey('Subject')
     room = StringCol()
