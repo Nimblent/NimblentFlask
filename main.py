@@ -1,6 +1,6 @@
 import subprocess
 # installation automatique des packages requis pour lancer le projet
-packagesInstall = subprocess.run(["pip", "install", "--user", "-r", "requirements.txt"])
+packagesInstall = subprocess.run(["pip", "install", "--user", "-r", "requirements.txt"], stdout=subprocess.DEVNULL) # subprocess.DEVNULL va diriger la sortie standard vers /dev/null ce qui permet de ne pas afficher les messages de l'installation des packages sauf les erreurs puisque STDERR est toujours redirigé vers le terminal
 
 if packagesInstall.returncode != 0:
     print("Erreur lors de l'exécution de l'installation des packages.")
@@ -8,15 +8,15 @@ if packagesInstall.returncode != 0:
 from flask import (
     Flask,
     render_template,
-    jsonify,
     request,
     session,
     redirect,
     url_for,
     flash,
 )
-from db import School, User, Course
+from db import School, User, Course, GroupTable, Subject
 import hashlib
+from datetime import datetime
 
 
 app = Flask("NimblentFLASK")
@@ -180,14 +180,36 @@ def create_schedule():
     
     if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:
         if request.method == "POST":
-            Course(
-                start=request.form["start"],
-                end=request.form["end"],
-                professor=request.form["professors"],
-                groups=request.form["groups"],
-                subject=request.form["subject"],
+            professors = User.select(User.q.id in request.form.getlist("professors"))
+            students = User.select(User.q.id in request.form.getlist("students"))
+
+            group = GroupTable(name=None, referant=professors[0], defaultPermission=0, parent=None)
+            for student in students:
+                group.addUsers(student)
+
+
+            start = datetime.strptime(request.form["start"], '%Y-%m-%dT%H:%M')
+            end = datetime.strptime(request.form["end"], '%Y-%m-%dT%H:%M')
+
+            subject = request.form["subject"]
+            existing_subject = Subject.selectBy(name=subject)
+
+            if existing_subject.count() < 1:
+                subject = Subject(name=subject)
+            else:
+                subject = existing_subject.getOne()
+
+            course = Course(
+                start=start,
+                end=end,
+                subject=subject,
                 room=request.form["room"],
             )
+            course.addGroupTable(group)
+
+            for professor in professors:
+                course.addProfessor(professor)
+
             flash(f"Cours ajouté !", "success")
             return redirect(url_for("admin"))
         else:
@@ -210,14 +232,11 @@ def edit_schedule():
         return redirect(url_for("index"))
 
 @app.route("/admin/schedule/remove/<id>/", methods=["GET"])
-def delete_schedule(id):
+def delete_schedule():
     """
     Supprime un emploi du temps en fonction de son identifiant.
 
-    Args:
-        id (int): L'identifiant de l'emploi du temps à supprimer.
-
-    Retpurne:
+    Retourne:
         Une redirection vers la page "admin" si l'utilisateur est un administrateur et a le bon RNE, sinon une redirection vers la page "index".
     """
     if session.get("account_type") and session["account_type"] == "admin" and session.get("rne") and session["rne"] == School.select().getOne().rne:

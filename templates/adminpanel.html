@@ -18,7 +18,12 @@
     <div class="schedule cat">
         <h2>Emplois du temps</h2>
         <div class="scheduleDetails details"></div>
-
+        <div class="actions">
+            <div class="button primary" onclick=window.location.href='{{url_for("create_schedule")}}'>
+                <i data-feather="plus"></i>
+                Ajouter un cours
+            </div>
+        </div>
     </div>
     <div class="users cat">
         <h2>Base utilisateur</h2>

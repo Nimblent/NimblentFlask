@@ -1,4 +1,4 @@
-from sqlobject import sqlhub, connectionForURI, SQLObject, StringCol, IntCol, DateTimeCol, BoolCol, ForeignKey, sqlbuilder, MultipleJoin
+from sqlobject import sqlhub, connectionForURI, SQLObject, StringCol, IntCol, DateTimeCol, BoolCol, ForeignKey, MultipleJoin, RelatedJoin 
 import os
 
 db_filename = os.path.abspath('data.db')
@@ -39,17 +39,18 @@ class User(SQLObject):
     is_a_teacher = BoolCol()
     password = StringCol()
 
-class Group(SQLObject):
+class GroupTable(SQLObject):
     name = StringCol()
     referant = ForeignKey('User', default=None)
-    parent = ForeignKey('Group', default=None)
+    parent = ForeignKey('GroupTable', default=None)
+    users = MultipleJoin('User')
     defaultPermission = IntCol()
 
 class Course(SQLObject):
     start = DateTimeCol()
     end = DateTimeCol()
     professor = MultipleJoin('User')
-    groups = MultipleJoin('Group')
+    group = RelatedJoin('GroupTable')
     subject = ForeignKey('Subject')
     room = StringCol()
 
@@ -59,6 +60,6 @@ class Subject(SQLObject):
 
 School.createTable(ifNotExists=True)
 User.createTable(ifNotExists=True)
-Group.createTable(ifNotExists=True)
+GroupTable.createTable(ifNotExists=True)
 Course.createTable(ifNotExists=True)
 Subject.createTable(ifNotExists=True)
