@@ -21,9 +21,9 @@ You can download the project from [here](https://github.com/Nimblent/NimblentFla
 1.  Open a commend prompt in the project directory (downloaded and extracted before)
 2.  Write `py main.py` in the terminal
 
-All necessary packages will be automatically installed through the `requirements.txt` file
-
 <div align=center>
+
+All necessary packages will be automatically installed through the `requirements.txt` file
 
 # Credits
 
