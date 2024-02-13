@@ -1,3 +1,10 @@
+import subprocess
+# installation automatique des packages requis pour lancer le projet
+packagesInstall = subprocess.run(["pip", "install", "--user", "-r", "requirements.txt"])
+
+if packagesInstall.returncode != 0:
+    print("Erreur lors de l'exécution de l'installation des packages.")
+
 from flask import (
     Flask,
     render_template,
@@ -181,14 +188,14 @@ def create_schedule():
                 subject=request.form["subject"],
                 room=request.form["room"],
             )
-            flash("Cours ajouté !", "success")
+            flash(f"Cours ajouté !", "success")
             return redirect(url_for("admin"))
         else:
-            return render_template("schedule.html", type=0)
+            return render_template("schedule.html", type=0, users=User)
     else:
         return redirect(url_for("index"))
 
-@app.route("/admin/schedule/edit/", methods=["GET", "POST"])
+@app.route("/admin/schedule/edit/<id>", methods=["GET", "POST"])
 def edit_schedule():
     """
     Fonction qui permet de modifier l'emploi du temps.

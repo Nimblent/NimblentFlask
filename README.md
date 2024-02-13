@@ -1,24 +1,36 @@
-# Permissions
-Each user has a permissions that is an integer where each bit code a unique permission
-Here are the unique identifier of permissions
+<div align=center>
 
-0.  Create User
-1.  Create Group
-2.  Create Subject
-3.  Create Course
-4.  Edit Subject
-5.  Edit Group
-6.  Edit Course
-7.  Edit User
-8.  Delete Course
-9.  Delete Subject
-10. Delete User
-11. Delete Group
-12. Edit permission
+# Nimblent
 
-```PY
-user_perm = 3840 # Possible user permissions
+![](https://img.shields.io/badge/python-v3.11+-blue)
 
-# We want to check if this user can delete a subject (Perm n°9)
-(user_perm >> 9) & 1 # Will return 1 if the user has the permission
-```
+NSI web project with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the Flask and SQLObject Frameworks
+
+Python https://www.python.org/
+
+Flask documentation https://flask.palletsprojects.com/
+
+SQLObject documentation https://www.sqlobject.org/
+
+# Downloading
+
+You can download the project from [here](https://github.com/Nimblent/NimblentFlask/archive/refs/heads/master.zip)
+
+# Start the project
+
+</div>
+
+1.  Open a command prompt in the project directory (downloaded and extracted before)
+2.  Write `py main.py` in the terminal
+
+<div align=center>
+
+All necessary packages will be automatically installed through the `requirements.txt` file
+
+# Credits
+
+</div>
+
+- [**noappertBD (Nolan APPERT)**](https://github.com/noappertBD)
+- [**firelop (Pierre GUCHET)**](https://github.com/firelop)
+- [**NoveltyDust0 (Nathanaël QUERAUD)**](https://github.com/NoveltyDust0)

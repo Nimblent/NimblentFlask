@@ -15,10 +15,20 @@
             placeholder="Jour et heure de début" required />
         <input spellcheck="false" class="text" type="datetime-local" name="end" value="{{end}}"
             placeholder="Jour et heure de fin" required />
-        <input spellcheck="false" class="text" type="text" name="professors" value="{{professors}}"
-            placeholder="Professeurs dans ce cours" required />
-        <input spellcheck="false" class="text" type="text" name="groups" value="{{groups}}"
-            placeholder="Elèves dans ce cours" required />
+        <!-- <input spellcheck="false" class="text" type="text" name="professors" value="{{professors}}"
+            placeholder="Professeurs dans ce cours" required /> -->
+        <select class="text" multiple name="professors">
+            {% for user in users.selectBy(is_a_teacher=True).orderBy("lastName")%}
+            <option value="{{user.id}}">{{user.firstName[0]}}. {{user.lastName}}</option>
+            {%endfor%}
+        </select>
+        <!-- <input spellcheck="false" class="text" type="text" name="groups" value="{{groups}}"
+            placeholder="Elèves dans ce cours" required /> -->
+        <select class="text" multiple name="groups">
+            {% for user in users.selectBy(is_a_teacher=False).orderBy("lastName")%}
+            <option value="{{user.id}}">{{user.firstName}} {{user.lastName}}</option>
+            {%endfor%}
+        </select>
         <div class="buttons">
             <input class="help" type="button" value="Aide"
                 onclick="window.location.href=`https://github.com/firelop/NimblentFlask`" />
@@ -26,8 +36,8 @@
         </div>
         {% elif type == 1: %}
         <h2 style="width: 400px">Modifier un cours</h2>
-        <input spellcheck="false" class="text" type="text" name="subject" value="{{subject}}" placeholder="Libellé du cours"
-            required />
+        <input spellcheck="false" class="text" type="text" name="subject" value="{{subject}}"
+            placeholder="Libellé du cours" required />
         <input spellcheck="false" class="text" type="text" name="room" value="{{room}}" placeholder="Salle de classe"
             required />
         <input spellcheck="false" class="text" type="datetime-local" name="start" value="{{start}}"
