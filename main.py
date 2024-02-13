@@ -17,6 +17,7 @@ from flask import (
 from db import School, User, Course, GroupTable, Subject
 import hashlib
 from datetime import datetime
+from icalendar import Calendar, Event
 
 
 app = Flask("NimblentFLASK")
@@ -253,6 +254,39 @@ def logout():
     """
     session.clear()
     return redirect(url_for("index"))
+
+
+@app.route("/schedule/export/", methods=["GET"])
+def get_ical():
+    """
+    Exporte l'emploi du temps de l'utilisateur au format iCal.
+
+    Retourne:
+        Un fichier au format iCal.
+    """
+    user = User.selectBy(username=session["username"]).getOne()
+    cours = []
+
+    if not user.is_a_teacher:
+        user_groups = user.groups
+        for group in user_groups:
+            for course in group.courses:
+                cours.append(course)
+
+    for course in user.courses:
+        cours.append(course)
+
+    cal = Calendar()
+    for course in cours:
+        event = Event()
+        event.add("summary", course.subject.name)
+        event.add("dtstart", course.start)
+        event.add("dtend", course.end)
+        event.add("location", course.room)
+        cal.add_component(event)
+
+    # Download file
+    return cal.to_ical(), 200, { "Content-Disposition": "attachment; filename=calendar.ics" }
 
 
 @app.after_request

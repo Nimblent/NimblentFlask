@@ -57,6 +57,7 @@ class GroupTable(SQLObject):
     referant = ForeignKey('User', default=None)
     parent = ForeignKey('GroupTable', default=None)
     users = RelatedJoin('User')
+    courses = RelatedJoin('Course')
     defaultPermission = IntCol()
 
 class Course(SQLObject):
