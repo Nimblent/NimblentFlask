@@ -79,7 +79,7 @@ You can choose **multiple teachers and multiple students** for the course by cli
 
 
 ## Retrieve courses - Admin dashboard
-There is no direct way to retrieve courses from the admin dashboard, but you can download the **current user**'s courses in a `.ics` file by clicking on the "Télécharger l'emplois du temps" button.
+There is no direct way to retrieve courses from the admin dashboard, but you can download the **current user**'s courses in a `.ics` file by clicking on the "Télécharger l'emplois du temps" button (logged in as a teacher or a student with accounts created before).
 
 You can then import the `.ics` file in your calendar application or use [this website to preview the schedule](https://larrybolt.github.io/online-ics-feed-viewer)
 
