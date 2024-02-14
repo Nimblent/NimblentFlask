@@ -1,7 +1,6 @@
 <div align=center>
 
 # Nimblent
-</div>
 
 ![](https://img.shields.io/badge/python-v3.11+-blue)
 
@@ -12,8 +11,6 @@ Python https://www.python.org/
 Flask documentation https://flask.palletsprojects.com/
 
 SQLObject documentation https://www.sqlobject.org/
-
-<div align=center>
 
 # Setup
 </div>
