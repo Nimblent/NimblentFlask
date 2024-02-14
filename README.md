@@ -5,7 +5,7 @@
 
 ![](https://img.shields.io/badge/python-v3.11+-blue)
 
-NSI web project with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the Flask and SQLObject Frameworks
+NSI web project with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the Flask and SQLObject modules
 
 Python https://www.python.org/
 
